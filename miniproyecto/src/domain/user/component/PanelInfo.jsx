@@ -1,12 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button } from 'primereact/button';
 import { Image } from 'primereact/image';
 import { AuthContext } from '../../shared/context/authContext';
 import { useNavigate } from 'react-router-dom';
+import { obtenerImagen } from '../api/UserApi';
 
 export default function PanelInfo() {
     const { user } = useContext(AuthContext);
-    console.log(user);
+    
 
   return (
     <>
@@ -25,23 +26,23 @@ export default function PanelInfo() {
             </div>
             <div className='fila'>
                 <label>PHOTO</label>
-                <Image src="https://primefaces.org/cdn/primereact/images/galleria/galleria7.jpg" alt="Image" width="100" />
+                <Image src={`http://localhost:3000/api/images/${user?.imagen}`} alt="Image" width="100" />
             </div>
             <div className='fila'>
                 <label>NAME</label>
-                <label>Hans Llanos</label>
+                <label>{user?.nombre} {user?.paterno} {user?.materno}</label>
             </div>
             <div className='fila'>
                 <label>BIO</label>
-                <label>Ing de Software</label>
+                <label>{user?.biografia}</label>
             </div>
             <div className='fila'>
                 <label>PHONE</label>
-                <label>961287931</label>
+                <label>{user?.telefono}</label>
             </div>
             <div className='fila'>
                 <label>EMAIL</label>
-                <label>hans.llanos@gmail.com</label>
+                <label>{user?.correo}</label>
             </div>
             <div className='fila'>
                 <label>PASSWORD</label>

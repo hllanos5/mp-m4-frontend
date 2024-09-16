@@ -1,14 +1,18 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext } from 'react'
 import { Menubar } from 'primereact/menubar';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { Avatar } from 'primereact/avatar';
 import { Divider } from 'primereact/divider';
 import { useNavigate } from 'react-router-dom';
 
+import { AuthContext } from '../../shared/context/authContext';
+
 export default function Nav() {
+    const { user } = useContext(AuthContext);
+
     const op = useRef(null);
     const setLocation = useNavigate();
-    
+
     const handleLogout = () => {
         localStorage.removeItem('authToken');
         console.clear();
@@ -23,8 +27,8 @@ export default function Nav() {
     )
     const end = (
         <div className='seccion-derecha'>
-            <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png" shape="circle" />
-            <div className='nombre'>Hans Llanos</div>
+            <Avatar image={`http://localhost:3000/api/images/${user?.imagen}`} shape="circle" />
+            <div className='nombre'>{user?.nombre} {user?.paterno} {user?.materno}</div>
             <i className='pi pi-angle-down ver-perfil' onClick={(e) => op.current.toggle(e)}></i>
             <OverlayPanel ref={op}>
                 <div><i className='pi pi-user icono'></i> My profile</div>
