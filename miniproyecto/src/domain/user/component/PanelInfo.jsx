@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from 'primereact/button';
 import { Image } from 'primereact/image';
+import { AuthContext } from '../../shared/context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function PanelInfo() {
+    const { user } = useContext(AuthContext);
+    console.log(user);
+
   return (
     <>
         <div className='panel-profile'>

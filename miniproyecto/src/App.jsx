@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './domain/user/pages/Login'
 import ProfileInfo from './domain/user/pages/ProfileInfo'
 import ProfileEdit from './domain/user/pages/ProfileEdit'
+import ProtectedRoute from './domain/shared/routes/ProtectedRoute';
 
 function App() {
 
@@ -9,8 +10,10 @@ function App() {
     <main>
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/profile-info' element={<ProfileInfo />} />
-        <Route path='/profile-edit' element={<ProfileEdit />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path='/profile-info' element={<ProfileInfo />} />
+          <Route path='/profile-edit' element={<ProfileEdit />} />
+        </Route>
       </Routes>
     </main>
   )

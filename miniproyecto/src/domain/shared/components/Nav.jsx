@@ -3,9 +3,17 @@ import { Menubar } from 'primereact/menubar';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { Avatar } from 'primereact/avatar';
 import { Divider } from 'primereact/divider';
+import { useNavigate } from 'react-router-dom';
 
 export default function Nav() {
     const op = useRef(null);
+    const setLocation = useNavigate();
+    
+    const handleLogout = () => {
+        localStorage.removeItem('authToken');
+        console.clear();
+        setLocation('/');
+      };
 
     const start = (
         <div className='seccion-izquierda'>
@@ -22,7 +30,7 @@ export default function Nav() {
                 <div><i className='pi pi-user icono'></i> My profile</div>
                 <div> <i className='pi pi-users icono'></i> Group Chat</div>
                 <Divider />
-                <div className='logout'> <i className='pi pi-sign-out'></i> Logout</div>
+                <div className='logout' onClick={handleLogout}> <i className='pi pi-sign-out'></i> Logout</div>
             </OverlayPanel>
         </div>
     );

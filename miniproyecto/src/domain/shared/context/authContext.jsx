@@ -16,7 +16,6 @@ export const AuthContextProvider = ({ children }) => {
       alert(error.response.data.message);
     },
     onSuccess: data => {
-      alert(data.message);
       localStorage.setItem('authToken', data.token);
       setLocation('/profile-info');
     },
