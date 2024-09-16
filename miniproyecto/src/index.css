@@ -2,6 +2,69 @@
     background-color:#2f80ed ;
     border: 1px solid #2f80ed;
 }
+.p-overlaypanel-content{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 175px;
+    div{
+        display: flex;
+        gap: 0.5rem;
+        cursor:pointer;
+        border-radius: 5px;
+        .icono{
+            padding: 0.2rem;
+            border-radius: 50%;            
+        }
+    }
+    div:hover {
+        background-color:#f2f2f2 ;
+        .icono {
+            color: white;
+            background-color: #4f4f4f;
+        }
+    }
+    .logout{
+        color:red;
+        .icono{
+            padding: 0.2rem;
+            border-radius: 50%;
+            color: white;
+            background-color: #4f4f4f;
+        }
+    }
+}
+.p-divider{
+    margin: 0;
+}
+main {
+    margin-inline: 2rem;
+    .p-menubar {
+        background:none;
+        border: none; 
+    }
+    .seccion-izquierda{
+        font-size: 0.75rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        label{
+            margin-top:-2px;
+        }
+    }
+    .seccion-derecha{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        margin-right: 2rem;
+        .nombre{
+            font-size: 0.8rem;
+        }
+        .ver-perfil{
+            cursor: pointer;
+        }        
+    }
 
 .frm-login{
     display: flex;
@@ -48,7 +111,6 @@
             gap:1rem;
             i{
                 border:1px groove #828282;
-                padding: 0.5rem;
                 border-radius: 50%;
                 cursor: pointer;
             }
@@ -56,4 +118,5 @@
     }
     
 
+}
 }
