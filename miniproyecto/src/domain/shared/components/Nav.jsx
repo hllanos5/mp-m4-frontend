@@ -19,6 +19,10 @@ export default function Nav() {
         setLocation('/');
       };
 
+    const handleProfile = () => {
+        setLocation('/profile-info');
+    };
+
     const start = (
         <div className='seccion-izquierda'>
             <i className='pi pi-code'></i>
@@ -31,7 +35,7 @@ export default function Nav() {
             <div className='nombre'>{user?.nombre} {user?.paterno} {user?.materno}</div>
             <i className='pi pi-angle-down ver-perfil' onClick={(e) => op.current.toggle(e)}></i>
             <OverlayPanel ref={op}>
-                <div><i className='pi pi-user icono'></i> My profile</div>
+                <div onClick={handleProfile}><i className='pi pi-user icono'></i> My profile</div>
                 <div> <i className='pi pi-users icono'></i> Group Chat</div>
                 <Divider />
                 <div className='logout' onClick={handleLogout}> <i className='pi pi-sign-out'></i> Logout</div>

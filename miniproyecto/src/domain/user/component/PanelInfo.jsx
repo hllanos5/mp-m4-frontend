@@ -7,8 +7,11 @@ import { obtenerImagen } from '../api/UserApi';
 
 export default function PanelInfo() {
     const { user } = useContext(AuthContext);
-    
+    const setLocation = useNavigate();
 
+    const handleEdit = () => {
+        setLocation('/profile-edit');
+      };
   return (
     <>
         <div className='panel-profile'>
@@ -21,7 +24,7 @@ export default function PanelInfo() {
                     <label> Some info may be visited to other people</label>
                 </div>
                 <div className='seccion-editar'>
-                    <Button label="Edit" severity="secondary" outlined />
+                    <Button label="Edit" severity="secondary" outlined onClick={handleEdit} />
                 </div>
             </div>
             <div className='fila'>
