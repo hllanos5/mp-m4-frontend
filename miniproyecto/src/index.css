@@ -39,6 +39,83 @@
 }
 main {
     margin-inline: 2rem;
+    .panel-profile{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h3{
+            font-size: 36px;
+            line-height: 49.03px;
+            font-weight: 400;
+            padding: 0;
+            margin-block: 10px;
+        }
+        label{
+            margin-bottom: 3rem;
+        }
+        .panel-info {
+            border:1px groove #D3D3D3;
+            border-radius: 5px;
+            width: 45rem;
+            .fila {
+                display: grid;
+                grid-template-columns: 20% 80%;
+                border-bottom: 1px groove #D3D3D3;
+                padding-inline: 3rem;
+                padding-block: 1rem;
+
+                img{
+                    border-radius: 10px;
+                }
+
+                label:first-child {
+                    color:#BDBDBD;
+                    font-size: 13px;
+                    line-height: 17.71px;
+                   
+                }
+                label:last-child{
+                    color:#333333
+                }
+                .seccion-profile{
+                    display: flex;
+                    flex-direction: column;
+                    label{
+                        color :#828282;
+                        margin-bottom: 0;
+                        margin-top: 1rem;
+                    }
+                    h4{
+                        font-weight: 400;
+                        font-size: 24px;
+                        padding: 0;
+                        margin: 0;
+                    }
+                }
+                .seccion-editar{
+                    .p-button {
+                        height: 35px;
+                        background-color: white;
+                        border:1px groove #828282;
+                        .p-button-label{
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+            .fila:first-child{
+                display: flex;
+                border-bottom: 1px groove #D3D3D3;
+                padding-inline: 3rem;
+                padding-block: 1rem;
+                justify-content: space-between;
+            }
+            .fila:last-child {
+                border-bottom: none;
+            }
+        }
+        
+    }
     .p-menubar {
         background:none;
         border: none; 
