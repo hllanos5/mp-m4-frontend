@@ -1,6 +1,6 @@
 import React from 'react'
-import Nav from '../component/info/Nav'
-import PanelInfo from '../component/info/PanelInfo'
+import Nav from '../../shared/Nav'
+import PanelInfo from '../component/PanelInfo'
 
 export default function Info() {
   return (

@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import Login from './domian/user/pages/Login'
-import Info from './domian/user/pages/Info'
+import ProfileInfo from './domian/user/pages/ProfileInfo'
+import ProfileEdit from './domian/user/pages/ProfileEdit'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <main>
-      <Info/>
+      <ProfileEdit/>
     </main>
   )
 }
