@@ -257,6 +257,7 @@ main {
             display: flex;
             gap:1rem;
             i{
+                padding: 0.75rem;
                 border:1px groove #828282;
                 border-radius: 50%;
                 cursor: pointer;
