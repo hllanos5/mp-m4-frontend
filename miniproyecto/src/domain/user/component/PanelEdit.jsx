@@ -39,14 +39,15 @@ export default function PanelEdit() {
             password:  e.target.password.getAttribute("value")
         };
 
-        const rawResponse = await fetch(`http://localhost:3000/api/user/${data.id}`, {
+        modificarUsuario(data)
+        /*const rawResponse = await fetch(`http://localhost:3000/api/user/${data.id}`, {
             method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
                 },
             body: JSON.stringify(data)
-        });
+        });*/
 
         setLocation('/profile-info');
     }
@@ -75,7 +76,10 @@ export default function PanelEdit() {
                         <label>Changes will be reflected to every services</label>
                     </div>
                     <div className='fila'>
-                        <Image src={`http://localhost:3000/api/images/${user?.imagen}`} alt="Image" width="100" />
+                        {
+                            (user?.imagen !== undefined) && 
+                            <Image src={`http://localhost:3000/api/images/${user?.imagen}`} alt="Image" width="100" />
+                        }
                         <label className='change-photo'> CHANGE PHOTO</label>
                     </div>
                     <div className='fila'>

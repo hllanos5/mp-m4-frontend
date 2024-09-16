@@ -15,5 +15,8 @@ export const modificarUsuario = async ({ id,  nombre, paterno, materno, biografi
         telefono: telefono,
         correo: correo,
         password: password
-    });
+    },
+    { headers: { 'Content-Type': 'application/json'} }    
+
+    );
   };
