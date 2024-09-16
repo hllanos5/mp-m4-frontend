@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from '../../shared/Nav'
+import Nav from '../../shared/components/Nav'
 import PanelEdit from '../component/PanelEdit'
 
 export default function ProfileEdit() {
