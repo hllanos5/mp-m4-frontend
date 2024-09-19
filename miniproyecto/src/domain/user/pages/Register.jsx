@@ -32,7 +32,7 @@ export default function Register() {
     const handleRegister = async e => {
         e.preventDefault();
         let pattern  = /^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})\S{8,}$/
-        console.log(pattern);
+        
         if(!pattern.test(e.target.password.value)){
             setVisible(true);
         }
@@ -82,7 +82,7 @@ export default function Register() {
         </form>
         <Dialog header="Mensaje" visible={visible} style={{ width: '350px' }} onHide={() => {if (!visible) return; setVisible(false); }}>
                 <p className="m-0">
-                   Datos incorrectos por favor verificar
+                   Password Incorrecto
                 </p>
         </Dialog>
         </>

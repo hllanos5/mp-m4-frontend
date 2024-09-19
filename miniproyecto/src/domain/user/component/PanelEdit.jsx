@@ -6,11 +6,28 @@ import { AuthContext } from '../../shared/context/authContext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { modificarUsuario } from '../api/UserApi';
+import { Password } from 'primereact/password';
+import { Divider } from 'primereact/divider';
+import { Dialog } from 'primereact/dialog';
 
 export default function PanelEdit() {
     const { user } = useContext(AuthContext);
+    const [visible, setVisible] = useState(false);
+    const [value, setValue] = useState('');
 
-    console.log(user);
+    const header = <div className="font-bold mb-3">Ingrese Contraseña</div>;
+    const footer = (
+        <>
+            <Divider />
+            <p className="mt-2">Sugerencias</p>
+            <ul className="pl-2 ml-2 mt-0 line-height-3">
+                <li>Al menos 1 letra mayuscula</li>
+                <li>Al menos 1 letra minuscula</li>
+                <li>Al menos 1 dato numerico</li>
+                <li>Mínimo 8 caracteres</li>
+            </ul>
+        </>
+    );
 
     const [nombre, setNombre] = useState('');
     const [paterno, setPaterno] = useState('');
@@ -28,6 +45,13 @@ export default function PanelEdit() {
 
     const handleUpdateUser= async e => {
         e.preventDefault();
+
+        let pattern  = /^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})\S{8,}$/
+        
+        if(!pattern.test(e.target.password.getAttribute("value"))){
+            setVisible(true);
+        }
+        
         const data = {
             id: user?.id,
             nombre:nombre,
@@ -38,16 +62,7 @@ export default function PanelEdit() {
             correo: correo,
             password:  e.target.password.getAttribute("value")
         };
-
-        modificarUsuario(data)
-        /*const rawResponse = await fetch(`http://localhost:3000/api/user/${data.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-                },
-            body: JSON.stringify(data)
-        });*/
+        modificarUsuario(data)        
 
         setLocation('/profile-info');
     }
@@ -108,7 +123,7 @@ export default function PanelEdit() {
                     </div>
                     <div className='fila'>
                         <label>Password</label>
-                        <InputText placeholder='Enter your new password...' type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <Password  value={value} onChange={(e) => setValue(e.target.value)} header={header} footer={footer} name='password' />
                     </div>
                     <div className='fila'>
                         <Button label="Save" severity="info" />
@@ -116,6 +131,11 @@ export default function PanelEdit() {
                 </div>
             </div>
         </form>
+        <Dialog header="Mensaje" visible={visible} style={{ width: '350px' }} onHide={() => {if (!visible) return; setVisible(false); }}>
+                <p className="m-0">
+                   Password Incorrecto
+                </p>
+        </Dialog>
     </>
   )
 }
