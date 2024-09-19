@@ -7,13 +7,15 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [mensajeError, setMensajeError] = useState("")
   const setLocation = useNavigate();
 
   const loginMutation = useMutation({
     mutationKey: ['login'],
     mutationFn: login,
     onError: error => {
-      alert(error.response.data.message);
+      setMensajeError(error.response.data.message);
+
     },
     onSuccess: data => {
       localStorage.setItem('authToken', data.token);
@@ -26,7 +28,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loginMutation, setUserData }}>
+    <AuthContext.Provider value={{ user, loginMutation, setUserData, mensajeError }}>
       {children}
     </AuthContext.Provider>
   );
