@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext,  useState } from 'react'
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
@@ -10,7 +10,6 @@ import { Dialog } from 'primereact/dialog';
 export default function Login() {
     const { loginMutation, mensajeError } = useContext(AuthContext);
     const [visible, setVisible] = useState(false);
-    const [value, setValue] = useState('');
     const setLocation = useNavigate();
 
     const handleLogin = async e => {
