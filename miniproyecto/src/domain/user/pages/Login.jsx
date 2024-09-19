@@ -17,7 +17,6 @@ export default function Login() {
             correo: e.target.username.value,
             password: e.target.password.value,
         };
-        console.log(data);
         await loginMutation.mutate(data);
     };
 

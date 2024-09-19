@@ -20,3 +20,13 @@ export const modificarUsuario = async ({ id,  nombre, paterno, materno, biografi
 
     );
   };
+
+  export const crearUsuario = async ({  correo, password }) => {
+    const res = await axios.post(`http://localhost:3000/api/user/`,{
+        correo: correo,
+        password: password
+    },
+    { headers: { 'Content-Type': 'application/json'} }    
+
+    );
+  };
