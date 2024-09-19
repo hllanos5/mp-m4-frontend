@@ -3,6 +3,7 @@ import Login from './domain/user/pages/Login'
 import ProfileInfo from './domain/user/pages/ProfileInfo'
 import ProfileEdit from './domain/user/pages/ProfileEdit'
 import ProtectedRoute from './domain/shared/routes/ProtectedRoute';
+import Register from './domain/user/pages/Register';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
     <main>
       <Routes>
         <Route path='/' element={<Login />} />
+        <Route path='/register' element={<Register />} />
         <Route element={<ProtectedRoute />}>
           <Route path='/profile-info' element={<ProfileInfo />} />
           <Route path='/profile-edit' element={<ProfileEdit />} />

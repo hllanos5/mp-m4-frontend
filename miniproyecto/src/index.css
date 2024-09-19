@@ -224,6 +224,15 @@ main {
     height: 58vh;
     padding-top: 3rem;
     padding-inline: 3rem;
+    .navegacion{
+        font-size: 14px;
+        color:#828282;
+        text-align: center;
+        span{
+            color: #2D9CDB;
+            cursor:pointer;
+        }
+    }
 
     .challengers{
         font-size: 0.75rem;

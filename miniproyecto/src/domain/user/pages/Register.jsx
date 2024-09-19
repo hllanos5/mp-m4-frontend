@@ -7,29 +7,31 @@ import { Button } from 'primereact/button';
 import { AuthContext } from '../../shared/context/authContext';
 import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
-    const { loginMutation } = useContext(AuthContext);
+export default function Register() {
+
     const setLocation = useNavigate();
 
-    const handleLogin = async e => {
+    const { loginMutation } = useContext(AuthContext);
+
+    const handleRegister = async e => {
         e.preventDefault();
         const data = {
-            correo: e.target.username.value,
+            username: e.target.username.value,
             password: e.target.password.value,
         };
-        console.log(data);
         await loginMutation.mutate(data);
     };
 
-    const handleRedirectToRegister = async e => {
-        setLocation('/register');
+    const handleRedirectToLogin = async e => {
+        setLocation('/');
     }
   
     return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleRegister}>
         <div className='frm-login'>
             <div><label className='challengers'>devchallenges</label></div>
-            <div><label className='negrita titulo'>Login</label></div>
+            <div><label className='negrita titulo'>Join thousands of learners from <br/> around the world</label></div>
+            <div><label>Master web development by making real-life projects. There are multiple paths for you to choose.</label></div>
             
             <IconField iconPosition="left">
                 <InputIcon className="pi pi-envelope"> </InputIcon>
@@ -39,7 +41,7 @@ export default function Login() {
                 <InputIcon className="pi pi-lock"> </InputIcon>
                 <InputText v-model="value1" placeholder="Password" type='password' name='password'/>
             </IconField>
-            <Button label="Login"  type='submit'/>
+            <Button label="Start coding now"  type='submit'/>
             <div className='seccion-texto-profile'>
                 <label> or continue with these social profile</label>
                 <div className='seccion-iconos-social'>
@@ -50,7 +52,7 @@ export default function Login() {
                 </div>
             </div>
             <div className='navegacion'>
-                Dont have an account yet ? <span onClick={handleRedirectToRegister}>Register</span>
+                Adready a member ? <span onClick={handleRedirectToLogin}>Login</span>
             </div>
             
         </div>

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const login = async ({ username, password }) => {
+export const login = async ({ correo, password }) => {
   const res = await axios.post('http://localhost:3000/api/auth/login', {
-    username,
+    correo,
     password,
   });
   return res.data;
